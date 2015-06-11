@@ -20,7 +20,9 @@
         "symfony/security": "~2.6",
         "symfony/translation": "~2.6",
         "symfony/twig-bridge": "~2.6",
-        "symfony/validator": "~2.6"
+        "symfony/validator": "~2.6",
+        "jeromemacias/silex-debug": "~2.0@dev",
+        "doctrine/dbal": "2.3.4"
     },
     "autoload": {
         "psr-0": { "": "src/" }

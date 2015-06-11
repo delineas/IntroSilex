@@ -5,6 +5,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use IntroSilex\Controllers\FormdataController;
+use IntroSilex\Controllers\ApiController;
 
 //Request::setTrustedProxies(array('127.0.0.1'));
 
@@ -12,6 +14,17 @@ $app->get('/', function () use ($app) {
     return $app['twig']->render('index.html.twig', array());
 })
 ->bind('homepage')
+;
+
+$app->mount("/formulario", new IntroSilex\Controllers\FormdataController());
+
+$app->mount("/api", new IntroSilex\Controllers\ApiController($app));
+
+
+$app->get('/privado', function () use ($app) {
+    return $app['twig']->render('privado.html.twig', array());
+})
+->bind('private')
 ;
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
